@@ -1,0 +1,24 @@
+import React from 'react';
+import { Trash2 } from 'lucide-react';
+
+const Dock = ({ onTrashClick }) => {
+  return (
+    <div className="dock-container">
+      <div className="dock-label">🗑️ Trash</div>
+      <div className="dock">
+        <div 
+          className="dock-item dock-trash"
+          onClick={onTrashClick}
+          title="Rejected content ideas"
+          data-testid="trash-can-btn"
+        >
+          <div className="dock-item-icon">
+            <Trash2 size={28} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dock;

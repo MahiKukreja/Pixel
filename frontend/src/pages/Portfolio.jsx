@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import BootScreen from '../components/BootScreen';
 import MenuBar from '../components/MenuBar';
 import Desktop from '../components/Desktop';
+import { assetUrl } from '../lib/assetUrl';
 
 const Portfolio = () => {
   const [isBooting, setIsBooting] = useState(true);
@@ -9,7 +10,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     // Preload audio
-    audioRef.current = new Audio('/assets/window-sound.mp3');
+    audioRef.current = new Audio(assetUrl('/assets/window-sound.mp3'));
   }, []);
 
   const handleBootComplete = () => {

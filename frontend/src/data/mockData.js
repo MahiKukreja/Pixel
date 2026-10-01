@@ -1,3 +1,5 @@
+import { assetUrl } from '../lib/assetUrl';
+
 // Portfolio content for Mahi Kukreja - restructured into sections
 
 export const internshipsData = [
@@ -5,7 +7,7 @@ export const internshipsData = [
     id: 'looplabs',
     title: 'LoopLabs Co',
     icon: '🔁',
-    logo: '/assets/looplabs-logo.png',
+    logo: assetUrl('/assets/looplabs-logo.png'),
     type: 'internship',
     content: {
       role: 'Creative Growth Intern (Founder\'s Office)',
@@ -25,7 +27,7 @@ export const internshipsData = [
     id: 'pikeazy',
     title: 'Pikeazy',
     icon: '🚀',
-    logo: '/assets/pikeazy-logo.png',
+    logo: assetUrl('/assets/pikeazy-logo.png'),
     type: 'internship',
     content: {
       role: 'Creative Growth Intern (Founder\'s Office)',

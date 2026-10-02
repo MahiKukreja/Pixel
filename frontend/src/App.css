@@ -1359,7 +1359,9 @@ input, textarea {
   }
 
   .section-box-icons {
-    justify-content: space-between;
+    /* space-between flung a 2-tile row to opposite edges; space the tiles
+       evenly instead so any row count reads as a group */
+    justify-content: space-evenly;
   }
 
   .sticky-note {

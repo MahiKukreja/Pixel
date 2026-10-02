@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mahi Kukreja">
+  <rect width="64" height="64" rx="12" fill="#2d1b69"/>
+  <!-- chunky pixel M: reads as a shape, not as detail, at 16px -->
+  <path d="M12 50V14h9l11 15 11-15h9v36h-9V29l-11 15-11-15v21z" fill="#efeaff"/>
+</svg>

@@ -5,8 +5,8 @@ const SectionBox = ({ title, subtitle, items, onIconClick, style }) => {
   return (
     <div className="section-box" style={style}>
       <div className="section-box-header">
-        <span className="section-box-title">▸ {title}</span>
-        {subtitle && <span className="section-box-subtitle">{subtitle}</span>}
+        <h2 className="section-box-title"><span aria-hidden="true">▸ </span>{title}</h2>
+        {subtitle && <p className="section-box-subtitle">{subtitle}</p>}
       </div>
       <div className="section-box-icons">
         {items.map((item) => (

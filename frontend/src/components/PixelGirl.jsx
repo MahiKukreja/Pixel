@@ -3,7 +3,7 @@ import { assetUrl } from '../lib/assetUrl';
 
 const PixelGirl = ({ onClick }) => {
   return (
-    <div className="pixel-girl-container" onClick={onClick} data-testid="pixel-girl-btn">
+    <button type="button" className="pixel-girl-container" onClick={onClick} data-testid="pixel-girl-btn" aria-label="Open About Me">
       <div className="pixel-girl">
         <img 
           src={assetUrl('/assets/pixel-girl.png')} 
@@ -11,7 +11,7 @@ const PixelGirl = ({ onClick }) => {
           className="pixel-girl-image"
         />
       </div>
-    </div>
+    </button>
   );
 };
 

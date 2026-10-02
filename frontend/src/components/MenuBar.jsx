@@ -20,7 +20,7 @@ const MenuBar = () => {
   };
 
   return (
-    <div className="menu-bar">
+    <header className="menu-bar">
       <div className="menu-bar-left">
         <span className="menu-item apple-logo">🍎</span>
         <span className="menu-item font-bold">Mahi Kukreja</span>
@@ -28,7 +28,7 @@ const MenuBar = () => {
       <div className="menu-bar-right">
         <span className="menu-item">{formatTime(currentTime)}</span>
       </div>
-    </div>
+    </header>
   );
 };
 

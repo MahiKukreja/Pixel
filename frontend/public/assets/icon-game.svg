@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Growth game">
+  <rect width="200" height="200" rx="34" fill="#3d3a52"/>
+  <rect x="24" y="62" width="152" height="80" rx="34" fill="#ffffff"/>
+  <rect x="52" y="92" width="30" height="9" rx="4.5" fill="#3d3a52"/>
+  <rect x="62" y="82" width="9" height="30" rx="4.5" fill="#3d3a52"/>
+  <circle cx="130" cy="90" r="10" fill="#e0533d"/>
+  <circle cx="150" cy="110" r="10" fill="#82c449"/>
+  <circle cx="110" cy="110" r="10" fill="#6d4bd6"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Next six months">
+  <rect width="200" height="200" rx="34" fill="#e0533d"/>
+  <circle cx="100" cy="100" r="58" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <circle cx="100" cy="100" r="32" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <circle cx="100" cy="100" r="11" fill="#ffffff"/>
+  <path d="M100 100l56-56" stroke="#7d2113" stroke-width="12" stroke-linecap="round"/>
+  <path d="M136 36h30v30z" fill="#7d2113"/>
+</svg>

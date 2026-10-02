@@ -44,6 +44,7 @@ const FuturePlansWindow = ({ onClose, zIndex, onFocus, playSound }) => {
             <button 
               type="button"
               className="window-btn window-btn-close" 
+              aria-label="Close window"
               onClick={handleClose}
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}

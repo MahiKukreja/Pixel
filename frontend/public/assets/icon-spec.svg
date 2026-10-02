@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Spec project brand audit">
+  <rect width="200" height="200" rx="34" fill="#0f9b8e"/>
+  <rect x="42" y="34" width="86" height="112" rx="9" fill="#ffffff"/>
+  <rect x="58" y="56" width="54" height="8" rx="4" fill="#0f9b8e"/>
+  <rect x="58" y="74" width="40" height="8" rx="4" fill="#9fded8"/>
+  <rect x="58" y="92" width="48" height="8" rx="4" fill="#9fded8"/>
+  <circle cx="126" cy="118" r="30" fill="none" stroke="#06544c" stroke-width="12"/>
+  <path d="M148 140l20 20" stroke="#06544c" stroke-width="14" stroke-linecap="round"/>
+</svg>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Window from './Window';
 import AboutWindow from './AboutWindow';
 import ExtracurricularsWindow from './ExtracurricularsWindow';
@@ -10,6 +10,7 @@ import StatNote from './StatNote';
 import SectionBox from './SectionBox';
 import Terminal from './Terminal';
 import PixelGirl from './PixelGirl';
+import Hero from './Hero';
 import Dock from './Dock';
 import { 
   internshipsData, 
@@ -24,6 +25,33 @@ const Desktop = ({ playSound }) => {
   const [highestZIndex, setHighestZIndex] = useState(100);
   const [showTrash, setShowTrash] = useState(false);
   const [showTrashConfirm, setShowTrashConfirm] = useState(false);
+  const sectionsRef = useRef(null);
+  const [moreBelow, setMoreBelow] = useState(false);
+
+  // The centre column scrolls inside a fixed-height desktop. On a short
+  // laptop that silently clipped the last section, so flag when content
+  // is still hidden below the fold.
+  const measureScroll = useCallback(() => {
+    const el = sectionsRef.current;
+    if (!el) return;
+    const hidden = el.scrollHeight - el.clientHeight - el.scrollTop;
+    setMoreBelow(hidden > 12);
+  }, []);
+
+  useEffect(() => {
+    measureScroll();
+    const el = sectionsRef.current;
+    if (!el) return undefined;
+    el.addEventListener('scroll', measureScroll, { passive: true });
+    window.addEventListener('resize', measureScroll);
+    const ro = new ResizeObserver(measureScroll);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener('scroll', measureScroll);
+      window.removeEventListener('resize', measureScroll);
+      ro.disconnect();
+    };
+  }, [measureScroll]);
 
 const handleIconClick = (project) => {
   // Handle external links
@@ -93,7 +121,7 @@ if (project.isLink && project.url) {
   };
 
   return (
-    <div className="desktop" onPointerDown={handleDesktopPointerDown} onTouchStart={handleDesktopPointerDown}>
+    <main className="desktop" onPointerDown={handleDesktopPointerDown} onTouchStart={handleDesktopPointerDown}>
       {/* Floating Clouds */}
       <Cloud style={{ top: '15%', right: '8%' }} animationDelay={0} />
       <Cloud style={{ top: '35%', right: '20%' }} animationDelay={3} />
@@ -106,8 +134,9 @@ if (project.isLink && project.url) {
         ))}
       </div>
 
-      {/* CENTER ZONE: Section Boxes */}
-      <div className="sections-zone">
+      {/* CENTER ZONE: Hero + Section Boxes */}
+      <div className="sections-zone" ref={sectionsRef}>
+        <Hero onAboutClick={() => handleIconClick({ id: 'about-me', type: 'about', title: 'About Me' })} />
         <SectionBox
           title="Experience"
           subtitle="Where I've built and shipped content"
@@ -127,6 +156,17 @@ if (project.isLink && project.url) {
           onIconClick={handleIconClick}
         />
       </div>
+
+      <button
+        type="button"
+        className="sections-scroll-hint"
+        data-show={moreBelow ? 'true' : 'false'}
+        tabIndex={moreBelow ? 0 : -1}
+        onClick={() => sectionsRef.current?.scrollBy({ top: 240, behavior: 'smooth' })}
+      >
+        <span className="sections-scroll-caret" aria-hidden="true" />
+        more below
+      </button>
 
       {/* RIGHT: Sticky Note */}
       <StickyNote />
@@ -196,7 +236,7 @@ if (project.isLink && project.url) {
           <div className="trash-content trash-confirm" onClick={(e) => e.stopPropagation()}>
             <div className="trash-header">
               <h2 className="trash-title">🗑️ Pakka?</h2>
-              <button className="trash-close" onClick={handleTrashCancel}>✕</button>
+              <button className="trash-close" onClick={handleTrashCancel} aria-label="Close">✕</button>
             </div>
             <div className="trash-body">
               <p className="trash-confirm-text">Are you sure about it?</p>
@@ -220,7 +260,8 @@ if (project.isLink && project.url) {
             <div className="trash-header">
               <h2 className="trash-title">Bin</h2>
               <button 
-                className="trash-close" 
+                className="trash-close"
+                aria-label="Close"
                 onClick={handleCloseTrash}
                 data-testid="close-dad-jokes"
               >
@@ -251,7 +292,7 @@ if (project.isLink && project.url) {
 
       {/* Trash Dock */}
       <Dock onTrashClick={handleTrashClick} />
-    </div>
+    </main>
   );
 };
 

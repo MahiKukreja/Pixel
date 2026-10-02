@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Activities and awards">
+  <rect width="200" height="200" rx="34" fill="#f0a91d"/>
+  <path d="M68 38h64v44a32 32 0 0 1-64 0z" fill="#ffffff"/>
+  <path d="M68 46H50a22 22 0 0 0 22 30zM132 46h18a22 22 0 0 1-22 30z" fill="none" stroke="#ffffff" stroke-width="9"/>
+  <rect x="92" y="112" width="16" height="22" fill="#ffffff"/>
+  <path d="M64 162c0-13 16-22 36-22s36 9 36 22z" fill="#ffffff"/>
+  <circle cx="100" cy="66" r="12" fill="#f0a91d"/>
+</svg>

@@ -2,7 +2,9 @@ import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
 const DesktopIcon = ({ project, onClick, inline = false }) => {
-  const IconContainer = project.openInNewTab ? 'a' : 'div';
+  // Links are anchors; everything else is a button, so each tile is
+  // reachable by Tab and operable with Enter or Space.
+  const IconContainer = project.openInNewTab ? 'a' : 'button';
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -16,21 +18,24 @@ const DesktopIcon = ({ project, onClick, inline = false }) => {
     top: `${project.position?.y}px`
   };
 
+  const label = project.openInNewTab
+    ? `${project.title} (opens in a new tab)`
+    : `Open ${project.title}`;
+
   return (
     <IconContainer
       className={`desktop-icon ${project.isLink ? 'desktop-icon-link' : ''} ${inline ? 'desktop-icon-inline' : ''}`}
       onClick={handleClick}
       style={positionStyle}
       data-testid={`icon-${project.id}`}
-      {...(project.openInNewTab ? {
-        href: project.url,
-        target: '_blank',
-        rel: 'noopener noreferrer'
-      } : {})}
+      aria-label={label}
+      {...(project.openInNewTab
+        ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
+        : { type: 'button' })}
     >
-      <div className="desktop-icon-image">
+      <span className="desktop-icon-image">
         {project.logo ? (
-          <img className="desktop-icon-logo" src={project.logo} alt={`${project.title} logo`} />
+          <img className="desktop-icon-logo" src={project.logo} alt="" />
         ) : (
           <span className="desktop-icon-emoji">{project.icon}</span>
         )}
@@ -44,8 +49,8 @@ const DesktopIcon = ({ project, onClick, inline = false }) => {
             {project.badge.text}
           </span>
         )}
-      </div>
-      <div className="desktop-icon-label">{project.shortTitle || project.title}</div>
+      </span>
+      <span className="desktop-icon-label">{project.shortTitle || project.title}</span>
     </IconContainer>
   );
 };

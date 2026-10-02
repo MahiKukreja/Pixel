@@ -51,6 +51,7 @@ export const aboutLinksData = [
     id: 'about-me',
     title: 'About Me',
     icon: '👤',
+    logo: assetUrl('/assets/icon-about.svg'),
     type: 'about',
     isLink: false
   },
@@ -58,6 +59,7 @@ export const aboutLinksData = [
     id: 'extracurriculars',
     title: 'Activities',
     icon: '🏆',
+    logo: assetUrl('/assets/icon-activities.svg'),
     type: 'extra',
     isLink: false
   },
@@ -65,6 +67,7 @@ export const aboutLinksData = [
     id: 'linkedin',
     title: 'LinkedIn',
     icon: '💼',
+    logo: assetUrl('/assets/icon-linkedin.svg'),
     type: 'link',
     isLink: true,
     openInNewTab: true,
@@ -94,6 +97,7 @@ export const aboutLinksData = [
     id: 'indian-walker',
     title: 'Spec Project',
     icon: '🔍',
+    logo: assetUrl('/assets/icon-spec.svg'),
     type: 'link',
     isLink: true,
     openInNewTab: true,
@@ -106,6 +110,7 @@ export const whatsNextData = [
     id: 'future-plans',
     title: 'Next 6 Months',
     icon: '🎯',
+    logo: assetUrl('/assets/icon-next.svg'),
     type: 'future',
     isLink: false
   },
@@ -113,6 +118,7 @@ export const whatsNextData = [
     id: 'growth-game',
     title: 'Growth Game',
     icon: '🎮',
+    logo: assetUrl('/assets/icon-game.svg'),
     type: 'game',
     isLink: false
   }

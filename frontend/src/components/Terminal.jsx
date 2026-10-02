@@ -8,7 +8,7 @@ const Terminal = () => {
         <div className="terminal-dot terminal-dot-red"></div>
         <div className="terminal-dot terminal-dot-yellow"></div>
         <div className="terminal-dot terminal-dot-green"></div>
-        <div className="terminal-title">~ mahi.sh</div>
+        <div className="terminal-title">mahi</div>
       </div>
       <div className="terminal-body">
         {terminalData.map((line, idx) => (

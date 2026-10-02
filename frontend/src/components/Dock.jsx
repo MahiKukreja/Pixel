@@ -6,16 +6,18 @@ const Dock = ({ onTrashClick }) => {
     <div className="dock-container">
       <div className="dock-label">🗑️ Trash</div>
       <div className="dock">
-        <div 
+        <button
+          type="button"
           className="dock-item dock-trash"
           onClick={onTrashClick}
           title="Rejected content ideas"
           data-testid="trash-can-btn"
+          aria-label="Open the bin of rejected content ideas"
         >
           <div className="dock-item-icon">
             <Trash2 size={28} />
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );

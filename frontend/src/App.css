@@ -1546,3 +1546,187 @@ input, textarea {
     flex-wrap: wrap;
   }
 }
+
+/* ===================================================================
+   UX pass: identity, keyboard access, readability, scroll discovery
+   =================================================================== */
+
+/* --- Tiles, trash and the avatar became <button>, so strip the UA chrome --- */
+.desktop-icon,
+.dock-trash,
+.pixel-girl-container {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.desktop-icon {
+  width: 98px;
+  padding: 8px;
+  display: block;
+}
+.desktop-icon-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Visible focus for keyboard users --- */
+.desktop-icon:focus-visible,
+.dock-trash:focus-visible,
+.pixel-girl-container:focus-visible,
+.hero-cta:focus-visible,
+.window-btn:focus-visible,
+.trash-btn:focus-visible,
+.trash-close:focus-visible {
+  outline: 3px solid #2d1b69;
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+.desktop-icon:focus-visible .desktop-icon-image {
+  transform: scale(1.06);
+}
+
+/* --- Readability: lift body copy off 7px. Short labels stay compact. --- */
+.section-box-subtitle,
+.stat-note-label,
+.terminal-line,
+.terminal-title,
+.next-month-desc,
+.window-skill-tag,
+.window-achievement-item,
+.window-period,
+.sticky-note-text-attribution,
+.dock-label,
+.row-label-subtext { font-size: 9px; line-height: 1.75; }
+
+.desktop-icon-label { font-size: 8px; line-height: 1.5; }
+.section-box-title  { font-size: 12px; }
+.stat-note-value    { font-size: 13px; }
+.sticky-note-text   { font-size: 11px; line-height: 1.7; }
+.window-description,
+.window-details,
+.about-contact-item,
+.next-month-title,
+.trash-item,
+.window-role       { font-size: 10px; line-height: 1.8; }
+.window-title      { font-size: 11px; }
+.menu-bar          { font-size: 11px; }
+
+/* --- Window close button: 16px visual, 44px touch target --- */
+.window-btn { position: relative; }
+.window-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Identity block --- */
+.hero {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(45, 27, 105, 0.18);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 4px 4px 0 rgba(45, 27, 105, 0.12);
+}
+.hero-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 20px;
+  line-height: 1.35;
+  color: #2d1b69;
+  margin: 0 0 10px;
+}
+.hero-tagline {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: #6d28d9;
+  margin: 0 0 12px;
+}
+.hero-blurb {
+  font-size: 10px;
+  line-height: 1.9;
+  color: #3b2a6b;
+  margin: 0 0 14px;
+  max-width: 52ch;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.hero-chip {
+  font-size: 9px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.16);
+  color: #3b2a6b;
+  border: 1px solid rgba(45, 27, 105, 0.15);
+}
+.hero-chip-open { background: rgba(34, 160, 90, 0.16); color: #14603a; }
+.hero-cta {
+  font-family: inherit;
+  font-size: 9px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 2px solid #2d1b69;
+  background: #2d1b69;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.hero-cta:hover { transform: translateY(-1px); }
+
+/* --- Make the nested scroll discoverable instead of silently clipping --- */
+.sections-zone { top: 42px; bottom: 92px; scrollbar-gutter: stable; }
+.sections-zone::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.85); }
+
+.sections-scroll-hint {
+  position: absolute;
+  left: 250px;
+  right: 350px;
+  max-width: 700px;
+  bottom: 54px;
+  margin: 0 auto;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 2px solid #2d1b69;
+  border-radius: 999px;
+  background: #2d1b69;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  z-index: 6;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.12s;
+  box-shadow: 0 3px 0 rgba(45, 27, 105, 0.3);
+}
+.sections-scroll-hint[data-show="true"] { opacity: 1; visibility: visible; }
+.sections-scroll-hint:hover { transform: translateY(1px); }
+.sections-scroll-caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+}
+.hero-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #1a9c5b; display: inline-block; margin-right: 7px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 16px; }
+  .hero-name { font-size: 17px; }
+  .desktop-icon { width: auto; min-width: 96px; }
+  .sections-scroll-hint { display: none; }
+}
